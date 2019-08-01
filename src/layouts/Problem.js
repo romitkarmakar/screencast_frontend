@@ -1,8 +1,11 @@
 import React from 'react';
 import Question from '../components/Question';
-import Options from '../components/Options';
+// import Options from '../components/Options';
+import Answer from '../components/Answer';
 import Navbar from './Navbar';
 import axios from 'axios';
+import AudioHint from '../components/AudioHint';
+import Countdown from 'react-countdown-now';
 
 export default class Problem extends React.Component {
 
@@ -13,7 +16,8 @@ export default class Problem extends React.Component {
       problems: []
     };
 
-    this.submitClick = this.submitClick.bind(this);
+    this.next = this.next.bind(this);
+    this.prev = this.prev.bind(this);
     this.fetchData = this.fetchData.bind(this);
   }
 
@@ -23,14 +27,14 @@ export default class Problem extends React.Component {
 
   fetchData() {
     var self = this;
-    axios.get("https://opentdb.com/api.php?amount=5&type=multiple").then(function (response) {
+    axios.get("https://opentdb.com/api.php?amount=10&type=boolean").then(function (response) {
       self.setState((state, props) => ({
         problems: [...response.data.results]
       }));
     });
   }
 
-  submitClick() {
+  next() {
     if (this.state.currIndex < this.state.problems.length) {
       console.log(this.state.currIndex);
       this.setState((state, props) => ({
@@ -43,6 +47,20 @@ export default class Problem extends React.Component {
       }));
     }
   }
+
+  prev() {
+    if (this.state.currIndex > 0) {
+      console.log(this.state.currIndex);
+      this.setState((state, props) => ({
+        currIndex: state.currIndex - 1
+      }));
+    } else {
+      this.setState((state, props) => ({
+        currIndex: 0
+      }));
+    }
+  }
+
   render() {
     if (this.state.problems.length !== 0)
       return <div>
@@ -53,13 +71,17 @@ export default class Problem extends React.Component {
             <div className="col-8">
               <div className="card m-5">
                 <div className="card-header">
-                  <Question question={this.state.problems[this.state.currIndex].question} />
+                  <h2>Question {this.state.currIndex + 1}/{this.state.problems.length}</h2>
+                  <Countdown date={Date.now() + 10000} />
                 </div>
                 <div className="card-body">
-                  <Options options={[...this.state.problems[this.state.currIndex].incorrect_answers, this.state.problems[this.state.currIndex].correct_answer]} />
+                  <Question question={this.state.problems[this.state.currIndex].question} />
+                  <AudioHint/>
+                  <Answer />
                 </div>
                 <div className="card-footer">
-                  <button className="btn btn-primary float-right" onClick={this.submitClick}>Submit</button>
+                  <button className="btn btn-primary float-right m-2" onClick={this.next}>Next &gt;</button>
+                  <button className="btn btn-secondary float-right m-2" onClick={this.prev}>&lt; Prev</button>
                 </div>
               </div>
               <div className="col-2"></div>
