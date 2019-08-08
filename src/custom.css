@@ -1,0 +1,15 @@
+.jumbotron {
+    color: white;
+    background-image: url("https://www.proschoolonline.com/wp-content/uploads/2019/04/5-Top-Technology-Trends-In-2019-And-The-Opportunities-They-Will-Create-1030x672.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 80vh;
+  }
+
+  .jumbotron .container {
+    position: absolute;
+    top: 45%;
+    left: 0;
+    width: 100%;
+  }

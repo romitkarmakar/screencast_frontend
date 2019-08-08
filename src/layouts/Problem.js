@@ -1,7 +1,6 @@
 import React from 'react';
 import Question from '../components/Question';
 import Answer from '../components/Answer';
-import Navbar from './Navbar';
 import axios from 'axios';
 import AudioHint from '../components/AudioHint';
 import AnswerAlert from '../components/AnswerAlert';
@@ -72,7 +71,6 @@ export default class Problem extends React.Component {
   render() {
     if (this.state.problems !== null)
       return <div>
-        <Navbar />
         <div className="container">
           <div className="row">
             <div className="col-2"></div>
