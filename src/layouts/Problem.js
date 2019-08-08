@@ -4,101 +4,90 @@ import Answer from '../components/Answer';
 import Navbar from './Navbar';
 import axios from 'axios';
 import AudioHint from '../components/AudioHint';
+import AnswerAlert from '../components/AnswerAlert';
 
 export default class Problem extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      currTime: 5,
-      currIndex: 0,
-      problems: []
+      currQuestion: 1,
+      problems: null,
+      isTrue: null,
+      answer: ""
     };
 
     this.next = this.next.bind(this);
-    this.prev = this.prev.bind(this);
-    this.tick = this.tick.bind(this);
     this.fetchData = this.fetchData.bind(this);
+    this.checkAns = this.checkAns.bind(this);
+    this.setAnswer = this.setAnswer.bind(this);
   }
 
   componentDidMount() {
     this.fetchData();
-    setInterval(this.tick, 1000);
-
-    if (localStorage.time) {
-      this.setState({
-        currTime: localStorage.time
-      });
-    }
-  }
-
-  tick() {
-    if (this.state.currTime > 0) {
-      this.setState((state, props) => ({
-        currTime: state.currTime - 1
-      }));
-
-      localStorage.setItem("time", this.state.currTime);
-    }
   }
 
   fetchData() {
     var self = this;
-    axios.get("https://opentdb.com/api.php?amount=5&type=boolean").then(function (response) {
+    axios.get("http://localhost:8000/quiz/getQuestion?email=abcd&q_number=" + self.state.currQuestion).then(function (response) {
       self.setState((state, props) => ({
-        problems: [...state.problems, ...response.data.results]
+        problems: response.data,
+        currQuestion: state.currQuestion + 1
       }));
     });
   }
 
   next() {
-    if (this.state.currIndex < this.state.problems.length) {
-      console.log(this.state.currIndex);
-      this.setState((state, props) => ({
-        currIndex: state.currIndex + 1
-      }));
-    } else {
-      this.setState({
-        currIndex: 0
-      });
-      this.fetchData();
-    }
+    var self = this
+    this.checkAns().then((value) => {
+      if(value === 1) {
+        self.fetchData()
+      }
+    })
   }
 
-  prev() {
-    if (this.state.currIndex > 0) {
-      console.log(this.state.currIndex);
-      this.setState((state, props) => ({
-        currIndex: state.currIndex - 1
-      }));
-    } else {
-      this.setState((state, props) => ({
-        currIndex: 0
-      }));
-    }
+  checkAns() {
+    var self = this
+    return new Promise(function(resolve, reject) {
+      try{
+        axios.get(`http://localhost:8000/quiz/checkAnswer?q_number=${self.state.currQuestion - 1}&answer=${self.state.answer}`).then(function (response) {
+          self.setState((state, props) => ({
+            isTrue: response.data.isTrue
+          }));
+          AnswerAlert(response.data.isTrue)
+          resolve(response.data.isTrue)
+        });
+      }catch(e) {
+        console.log("Error");
+      }
+    })
+  }
+
+  setAnswer(answer) {
+    this.setState({
+      answer: answer
+    })
   }
 
   render() {
-    if (this.state.problems.length !== 0)
+    if (this.state.problems !== null)
       return <div>
         <Navbar />
         <div className="container">
           <div className="row">
             <div className="col-2"></div>
             <div className="col-8">
-              <h3 className="float-right">{this.state.currTime} seconds left</h3>
               <div className="card m-5">
                 <div className="card-header">
-                  <h2>Question {this.state.currIndex + 1}/{this.state.problems.length}</h2>
+                  <h2>Question</h2>
                 </div>
                 <div className="card-body">
-                  <Question question={this.state.problems[this.state.currIndex].question} />
+                  <Question question={this.state.problems.question} />
                   <AudioHint />
-                  <Answer />
+                  <Answer index={this.state.currQuestion} setAnswer={this.setAnswer} currAnswer={this.state.answer} />
                 </div>
                 <div className="card-footer">
-                  <button className="btn btn-primary float-right m-2" onClick={this.next}>Next &gt;</button>
-                  <button className="btn btn-secondary float-right m-2" onClick={this.prev}>&lt; Prev</button>
+                  <button className="btn btn-primary float-right m-2" onClick={this.next}>Submit</button>
                 </div>
               </div>
               <div className="col-2"></div>
