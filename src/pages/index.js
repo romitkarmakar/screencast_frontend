@@ -5,18 +5,30 @@ import SEO from "../components/seo"
 import DashboardLayout from "../layouts/DashboardLayout";
 import '../custom.css';
 
-const IndexPage = () => (
-  <div>
-    <SEO title="Home" />
-    <DashboardLayout>
-      <div className="jumbotron jumbotron-fluid">
-        <div className="container">
-          <h1 className="display-4 mx-auto d-block">Fluid jumbotron</h1>
-          <p>This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+import Typed from 'typed.js';
+
+class IndexPage extends React.Component {
+  componentDidMount() {
+    var typed = new Typed('.element', {
+      strings: ["show your talent to college.", "test your linux terminal skills.", "win exciting prizes and goodies."],
+      typeSpeed: 50,
+      backSpeed: 50,
+    });
+  }
+
+  render() {
+    return <div>
+      <SEO title="Home" />
+      <DashboardLayout>
+        <div className="jumbotron jumbotron-fluid">
+          <div className="container">
+            <h1 className="display-4 mx-auto d-block">Screencast Quiz</h1>
+            <h3>Competition to <span className="element"></span></h3>
+          </div>
         </div>
-      </div>
-    </DashboardLayout>
-  </div>
-)
+      </DashboardLayout>
+    </div>
+  }
+}
 
 export default IndexPage

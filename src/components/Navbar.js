@@ -48,6 +48,11 @@ export default class Navbar extends React.Component {
               <a className="nav-link" href="#">Dashboard</a>
             </Link>
           </li>
+          <li className="nav-item">
+            <Link to="/leaderboard/">
+              <a className="nav-link" href="#">LeaderBoard</a>
+            </Link>
+          </li>
         </ul>
         <span className="navbar-text">
           {sideBar}
