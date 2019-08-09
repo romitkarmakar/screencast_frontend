@@ -30,7 +30,7 @@ export default class LeaderBoard extends React.Component {
         })
     }
     render() {
-        if (this.state.playerRanks != [])
+        if (this.state.playerRanks !== [])
             return <DashboardLayout>
                 <div className="container mt-5">
                     <div className="row">

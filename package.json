@@ -17,6 +17,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-facebook-login": "^4.1.1",
     "react-google-login": "^5.0.5",
     "react-helmet": "^5.2.1",
     "sweetalert2": "^8.15.2",

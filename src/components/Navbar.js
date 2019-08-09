@@ -3,6 +3,8 @@ import React from 'react';
 import GoogleSignIn from '../components/GoogleSignIn';
 import logo from '../images/screencast.png';
 import { Link } from "gatsby"
+import FacebookSignIn from './FacebookSignIn';
+import { navigate } from "gatsby"
 
 export default class Navbar extends React.Component {
   constructor(props) {
@@ -19,11 +21,12 @@ export default class Navbar extends React.Component {
       profileImage: obj.imageUrl,
       name: obj.name
     })
+    navigate("/dashboard/")
   }
 
   render() {
     var sideBar;
-    if (this.state.profileImage === "") sideBar = <GoogleSignIn setProf={this.setProfile} />
+    if (this.state.profileImage === "") sideBar = <div><GoogleSignIn setProf={this.setProfile} /><FacebookSignIn/></div>
     else sideBar = <div>
       <img src={this.state.profileImage} height={30} alt="Test" className="img-circle" />
       {this.state.name}

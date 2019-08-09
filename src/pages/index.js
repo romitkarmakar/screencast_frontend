@@ -24,6 +24,7 @@ class IndexPage extends React.Component {
           <div className="container">
             <h1 className="display-4 mx-auto d-block">Screencast Quiz</h1>
             <h3>Competition to <span className="element"></span></h3>
+            <button className="btn btn-success btn-lg mt-2">Enter the Contest</button>
           </div>
         </div>
       </DashboardLayout>
