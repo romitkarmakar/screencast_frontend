@@ -17,7 +17,7 @@
 }
 
 .jumbotron .container h1 {
-  font-size: 50px;
+  font-size: 4em
 }
 
 /* Shared */
@@ -84,3 +84,5 @@
 .loginBtn--google:focus {
   background: #E74B37;
 }
+
+audio { width: 200px; }

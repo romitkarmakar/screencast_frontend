@@ -28,7 +28,7 @@ export default class Problem extends React.Component {
 
   fetchData() {
     var self = this;
-    axios.get("http://localhost:8000/quiz/getQuestion?email=abcd&q_number=" + self.state.currQuestion).then(function (response) {
+    axios.get("http://api.screencast.trennds.com/Project/quiz/getQuestion?email=abcd&q_number=" + self.state.currQuestion).then(function (response) {
       self.setState((state, props) => ({
         problems: response.data,
         currQuestion: state.currQuestion + 1
@@ -49,7 +49,7 @@ export default class Problem extends React.Component {
     var self = this
     return new Promise(function(resolve, reject) {
       try{
-        axios.get(`http://localhost:8000/quiz/checkAnswer?q_number=${self.state.currQuestion - 1}&answer=${self.state.answer}&email=abcd`).then(function (response) {
+        axios.get(`http://api.screencast.trennds.com/Project/quiz/checkAnswer?q_number=${self.state.currQuestion - 1}&answer=${self.state.answer}&email=abcd`).then(function (response) {
           self.setState((state, props) => ({
             isTrue: response.data.isTrue
           }));
@@ -73,8 +73,8 @@ export default class Problem extends React.Component {
       return <div>
         <div className="container">
           <div className="row">
-            <div className="col-2"></div>
-            <div className="col-8">
+            <div className="d-none d-md-block col-2"></div>
+            <div className="col-sm-6 col-lg-8">
               <div className="card m-5">
                 <div className="card-header">
                   <h2>Question</h2>
@@ -88,7 +88,7 @@ export default class Problem extends React.Component {
                   <button className="btn btn-primary float-right m-2" onClick={this.next}>Submit</button>
                 </div>
               </div>
-              <div className="col-2"></div>
+              <div className="d-none d-md-block col-2"></div>
             </div>
           </div>
         </div>

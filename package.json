@@ -6,20 +6,25 @@
   "author": "Romit Karmakar <romitkarmakar@gmail.com>",
   "dependencies": {
     "axios": "^0.19.0",
+    "bootstrap": "^4.3.1",
     "gatsby": "^2.13.42",
     "gatsby-image": "^2.2.7",
     "gatsby-plugin-manifest": "^2.2.4",
     "gatsby-plugin-offline": "^2.2.4",
     "gatsby-plugin-react-helmet": "^3.1.2",
+    "gatsby-plugin-s3": "^0.3.1",
     "gatsby-plugin-sharp": "^2.2.9",
     "gatsby-source-filesystem": "^2.1.6",
     "gatsby-transformer-sharp": "^2.2.5",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.15.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-facebook-login": "^4.1.1",
     "react-google-login": "^5.0.5",
     "react-helmet": "^5.2.1",
+    "reactstrap": "^8.0.1",
     "sweetalert2": "^8.15.2",
     "typed.js": "^2.0.10"
   },
@@ -37,7 +42,8 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
+    "deploy": "gatsby-plugin-s3 deploy"
   },
   "repository": {
     "type": "git",

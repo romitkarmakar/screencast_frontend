@@ -1,10 +1,10 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
+import NavBar from '../components/Navbar';
 import '../bootstrap.css';
 
 export default (props) => {
    return <div>
-        <Navbar/>
+        <NavBar/>
         {props.children}
    </div>
 }

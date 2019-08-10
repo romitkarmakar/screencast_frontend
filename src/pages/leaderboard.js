@@ -17,16 +17,19 @@ export default class LeaderBoard extends React.Component {
 
     fetchData() {
         var self = this
-        axios.get("http://localhost:8000/quiz/leaderboard").then((response) => {
-            var temp = response.data.map((v) => {
-                return <div className="alert alert-primary" role="alert">
-                    {v.name}
-                    <span className="float-right">{v.score}</span>
-                </div>
-            })
-            self.setState({
-                playerRanks: temp
-            })
+        axios.get("http:///api.screencast.trennds.com/Project/quiz/leaderboard").then((response) => {
+            if (response.data) {
+                var temp = response.data.map((v) => {
+                    return <div className="alert alert-primary" role="alert">
+                        {v.name}
+                        <span className="float-right">{v.score}</span>
+                    </div>
+                })
+                self.setState({
+                    playerRanks: temp
+                })
+            }
+
         })
     }
     render() {
@@ -34,15 +37,15 @@ export default class LeaderBoard extends React.Component {
             return <DashboardLayout>
                 <div className="container mt-5">
                     <div className="row">
-                        <div className="col-3"></div>
-                        <div className="col-6">
+                        <div className="col-lg-3"></div>
+                        <div className="col-lg-6 col-sm-12">
                             <div className="card p-3">
                                 <h1 className="mx-auto d-block">LeaderBoard</h1>
                                 <hr />
                                 {this.state.playerRanks}
                             </div>
                         </div>
-                        <div className="col-3"></div>
+                        <div className="col-lg-3"></div>
                     </div>
                 </div>
             </DashboardLayout>
