@@ -1,6 +1,7 @@
 import React from 'react';
 import GoogleLogin from 'react-google-login';
 import axios from 'axios';
+import { navigate } from "gatsby";
 
 export default class GoogleSignIn extends React.Component {
   constructor(props) {
@@ -8,20 +9,16 @@ export default class GoogleSignIn extends React.Component {
     this.setData = this.setData.bind(this)
   }
 
-  componentDidMount() {
-    if(localStorage.email) {
-      this.props.setProf({
-        imageUrl: localStorage.image,
-        email: localStorage.email,
-        name: localStorage.name
-      })
-    }
-  }
-
   registerUser(idToken) {
     axios.get(`http://api.screencast.trennds.com/Project/quiz/register?type=1&id_token=${idToken}`).then((res) => {
       console.log("User registered successfully");
     })
+  }
+
+  componentDidMount() {
+    if(localStorage.email) {
+      navigate("/dashboard/")
+    }
   }
 
   setData(res) {
@@ -31,7 +28,7 @@ export default class GoogleSignIn extends React.Component {
     localStorage.image = res.profileObj.imageUrl;
     localStorage.name = res.profileObj.name;
 
-    this.props.setProf(res.profileObj)
+    navigate("/dashboard/")
   }
 
   render() {

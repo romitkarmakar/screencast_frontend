@@ -7,6 +7,7 @@ import "../styles/index.module.css"
 import "../custom.css"
 
 import Typed from 'typed.js';
+import GoogleSignIn from "../components/GoogleSignIn";
 
 class IndexPage extends React.Component {
   componentDidMount() {
@@ -26,7 +27,8 @@ class IndexPage extends React.Component {
             <h1 className="display-4 mx-auto d-block">Screencast Quiz</h1>
             <h3>Competition to <span className="element"></span></h3>
             <Link to="/dashboard/">
-              <button className="btn btn-success btn-lg mt-2">Enter the Contest</button>
+              {/* <button className="btn btn-success btn-lg mt-2">Enter the Contest</button> */}
+              <GoogleSignIn/>
             </Link>
           </div>
         </div>

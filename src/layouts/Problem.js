@@ -51,7 +51,7 @@ export default class Problem extends React.Component {
     var self = this
     return new Promise(function (resolve, reject) {
       try {
-        axios.get(`http://api.screencast.trennds.com/Project/quiz/checkAnswer?q_number=${self.state.currQuestion - 1}&answer=${self.state.answer}&email=${this.state.email}`).then(function (response) {
+        axios.get(`http://api.screencast.trennds.com/Project/quiz/checkAnswer?answer=${self.state.answer}&email=${localStorage.email}`).then(function (response) {
           self.setState((state, props) => ({
             isTrue: response.data.isTrue
           }));

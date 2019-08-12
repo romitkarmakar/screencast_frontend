@@ -36,5 +36,14 @@ module.exports = {
         bucketName: 'screencast.trennds.com'
       },
     },
+    {
+      resolve: `gatsby-plugin-nprogress`,
+      options: {
+        // Setting a color is optional.
+        color: `tomato`,
+        // Disable the loading spinner.
+        showSpinner: true,
+      },
+    },
   ],
 }

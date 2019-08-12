@@ -30,11 +30,17 @@ export default class NavBar extends React.Component {
     this.toggleNavbar = this.toggleNavbar.bind(this);
   }
 
-  setProfile(obj) {
-    this.setState({
-      profileImage: obj.imageUrl,
-      name: obj.name
-    })
+  componentDidMount() {
+    this.setProfile();
+  }
+
+  setProfile() {
+    if (localStorage.email) {
+      this.setState({
+        profileImage: localStorage.image,
+        name: localStorage.name
+      })
+    }
     // navigate("/dashboard/")
   }
 
@@ -46,7 +52,7 @@ export default class NavBar extends React.Component {
 
   render() {
     var sideBar;
-    if (this.state.profileImage === "") sideBar = <div><GoogleSignIn setProf={this.setProfile} /><FacebookSignIn /></div>
+    if (this.state.profileImage === "") sideBar = <div></div>
     else sideBar = <div>
       <img src={this.state.profileImage} height={30} alt="Test" className="img-circle" />
       <span className="text-white">{this.state.name}</span>
@@ -61,7 +67,7 @@ export default class NavBar extends React.Component {
               {' '}creenCast Quiz</a>
           </Link>
         </NavbarBrand>
-        <NavbarToggler onClick={this.toggleNavbar} className="toggler"/>
+        <NavbarToggler onClick={this.toggleNavbar} className="toggler" />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
