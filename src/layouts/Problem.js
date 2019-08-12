@@ -4,6 +4,7 @@ import Answer from '../components/Answer';
 import axios from 'axios';
 import AudioHint from '../components/AudioHint';
 import AnswerAlert from '../components/AnswerAlert';
+import { navigate } from 'gatsby';
 
 export default class Problem extends React.Component {
 
@@ -35,6 +36,8 @@ export default class Problem extends React.Component {
         problems: response.data,
         currQuestion: state.currQuestion + 1
       }));
+    }).catch(function (error) {
+      navigate('/finish/')
     });
   }
 

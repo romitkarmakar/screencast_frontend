@@ -45,5 +45,21 @@ module.exports = {
         showSpinner: true,
       },
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Screencast`,
+        short_name: `Screencast`,
+        description: `Quiz to test your skills and knowledge.`,
+        start_url: `/`,
+        background_color: `#f7f0eb`,
+        theme_color: `#a2466c`,
+        display: `standalone`,
+        icon: `src/images/screencast.png`,
+        cache_busting_mode: `name`,
+        crossOrigin: `anonymous`
+      },
+    },
+    `gatsby-plugin-offline`
   ],
 }
