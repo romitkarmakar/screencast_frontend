@@ -13,7 +13,8 @@ export default class Problem extends React.Component {
       currQuestion: 1,
       problems: null,
       isTrue: null,
-      answer: ""
+      answer: "",
+      email: ""
     };
 
     this.next = this.next.bind(this);
@@ -23,12 +24,13 @@ export default class Problem extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchData();
+      this.fetchData();
   }
 
   fetchData() {
     var self = this;
-    axios.get("http://api.screencast.trennds.com/Project/quiz/getQuestion?email=abcd&q_number=" + self.state.currQuestion).then(function (response) {
+    console.log(this.state.email)
+    axios.get(`http://api.screencast.trennds.com/Project/quiz/getQuestion?email=${localStorage.email}`).then(function (response) {
       self.setState((state, props) => ({
         problems: response.data,
         currQuestion: state.currQuestion + 1
@@ -39,7 +41,7 @@ export default class Problem extends React.Component {
   next() {
     var self = this
     this.checkAns().then((value) => {
-      if(value === 1) {
+      if (value === 1) {
         self.fetchData()
       }
     })
@@ -47,16 +49,16 @@ export default class Problem extends React.Component {
 
   checkAns() {
     var self = this
-    return new Promise(function(resolve, reject) {
-      try{
-        axios.get(`http://api.screencast.trennds.com/Project/quiz/checkAnswer?q_number=${self.state.currQuestion - 1}&answer=${self.state.answer}&email=abcd`).then(function (response) {
+    return new Promise(function (resolve, reject) {
+      try {
+        axios.get(`http://api.screencast.trennds.com/Project/quiz/checkAnswer?q_number=${self.state.currQuestion - 1}&answer=${self.state.answer}&email=${this.state.email}`).then(function (response) {
           self.setState((state, props) => ({
             isTrue: response.data.isTrue
           }));
           AnswerAlert(response.data.isTrue)
           resolve(response.data.isTrue)
         });
-      }catch(e) {
+      } catch (e) {
         console.log("Error");
       }
     })
@@ -74,18 +76,22 @@ export default class Problem extends React.Component {
         <div className="container">
           <div className="row">
             <div className="d-none d-md-block col-2"></div>
-            <div className="col-sm-6 col-lg-8">
-              <div className="card m-5">
-                <div className="card-header">
-                  <h2>Question</h2>
+            <div className="col-sm-6 col-lg-8 mt-4">
+              <div className="card bg-transparent">
+                <div className="card-header bg-transparent">
+                  <img src="https://img.icons8.com/color/48/000000/document.png" className="float-left" alt="ssf" />
+                  <h2 className="text-white">Question</h2>
                 </div>
                 <div className="card-body">
-                  <Question question={this.state.problems.question} />
-                  <AudioHint />
+                  <Question question={this.state.problems.question} imageHint={this.state.problems.image} />
+                  <AudioHint audioUrl={this.state.problems.audio} />
                   <Answer index={this.state.currQuestion} setAnswer={this.setAnswer} currAnswer={this.state.answer} />
                 </div>
-                <div className="card-footer">
-                  <button className="btn btn-primary float-right m-2" onClick={this.next}>Submit</button>
+                <div className="card-footer bg-transparent">
+                  <button className="btn btn-success float-right m-2 pl-3" onClick={this.next}>
+                    Submit
+                    <img src="https://img.icons8.com/plasticine/26/000000/idea.png" alt="daf" />
+                  </button>
                 </div>
               </div>
               <div className="d-none d-md-block col-2"></div>

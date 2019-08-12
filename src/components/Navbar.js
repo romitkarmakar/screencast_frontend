@@ -5,6 +5,7 @@ import logo from '../images/screencast.png';
 import { Link } from "gatsby"
 import FacebookSignIn from './FacebookSignIn';
 import { navigate } from "gatsby";
+import '../custom.css';
 
 import {
   Collapse,
@@ -48,11 +49,11 @@ export default class NavBar extends React.Component {
     if (this.state.profileImage === "") sideBar = <div><GoogleSignIn setProf={this.setProfile} /><FacebookSignIn /></div>
     else sideBar = <div>
       <img src={this.state.profileImage} height={30} alt="Test" className="img-circle" />
-      {this.state.name}
+      <span className="text-white">{this.state.name}</span>
     </div>
 
-    return <div>
-      <Navbar color="light" light expand="md">
+    return <div className="navbar-inner">
+      <Navbar color="transparent" secondary expand="md">
         <NavbarBrand>
           <Link to="/">
             <a className="navbar-brand" href="#">
@@ -60,7 +61,7 @@ export default class NavBar extends React.Component {
               {' '}creenCast Quiz</a>
           </Link>
         </NavbarBrand>
-        <NavbarToggler onClick={this.toggleNavbar} />
+        <NavbarToggler onClick={this.toggleNavbar} className="toggler"/>
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>

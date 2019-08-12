@@ -3,7 +3,8 @@ import { Link } from "gatsby"
 
 import SEO from "../components/seo"
 import DashboardLayout from "../layouts/DashboardLayout";
-import '../custom.css';
+import "../styles/index.module.css"
+import "../custom.css"
 
 import Typed from 'typed.js';
 
