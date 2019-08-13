@@ -96,3 +96,14 @@ audio { width: 200px; }
   font-size: 4em
 }
 
+@import url('https://fonts.googleapis.com/css?family=Bree+Serif&display=swap');
+html, body {
+    height: 100vh;
+    background-color: #000000 !important;
+}
+
+html, body {
+  height: 100vh;
+  background-image: url("https://cdn3.f-cdn.com/contestentries/334873/2536667/56a8a937103dd_thumb900.jpg"); 
+  height: '100%';
+}

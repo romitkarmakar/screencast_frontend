@@ -4,7 +4,6 @@ import { Link } from "gatsby"
 import DashboardLayout from '../layouts/DashboardLayout'
 import Problem from '../layouts/Problem'
 import SEO from "../components/seo"
-import "../styles/dashboard.module.css"
 
 export default function Dashboard() {
     return <DashboardLayout>

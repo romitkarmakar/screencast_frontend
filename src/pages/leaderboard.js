@@ -1,6 +1,7 @@
 import React from 'react';
 import DashboardLayout from '../layouts/DashboardLayout';
 import axios from 'axios';
+import AnswerAlert from '../components/AnswerAlert';
 
 export default class LeaderBoard extends React.Component {
     constructor(props) {
@@ -20,10 +21,11 @@ export default class LeaderBoard extends React.Component {
         axios.get("http:///api.screencast.trennds.com/Project/quiz/leaderboard").then((response) => {
             if (response.data) {
                 var temp = response.data.map((v, index) => {
-                    return <div className="alert alert-primary" role="alert" key={index}>
+                    return <div className="alert" role="alert" key={index}>
                         <img src={v.image} alt={v.name} className="img-circle" height="50" />
-                        <span className="m-2">{v.name}</span>
-                        <span className="float-right align-center">{v.score}</span>
+                        <span className="m-2 text-capitalize text-white">{v.name}
+                            <span className="float-right align-center text-white">{v.score}</span>
+                        </span>
                     </div>
                 })
                 self.setState({
@@ -31,10 +33,12 @@ export default class LeaderBoard extends React.Component {
                 })
             }
 
+        }).catch((error) => {
+            AnswerAlert(-1)
         })
     }
     render() {
-        if (this.state.playerRanks.length != 0)
+        if (this.state.playerRanks.length !== 0)
             return <DashboardLayout>
                 <div className="container mt-5">
                     <div className="row">
@@ -56,8 +60,8 @@ export default class LeaderBoard extends React.Component {
                     <div className="row">
                         <div className="col-lg-3"></div>
                         <div className="col-lg-6 col-sm-12">
-                            <div className="card p-3">
-                                <h1 className="mx-auto d-block">LeaderBoard</h1>
+                            <div className="card p-3 bg-transparent">
+                                <h1 className="mx-auto d-block text-white">LeaderBoard</h1>
                                 <hr />
                                 <div className="container">
                                     <div className="spinner-border mx-auto d-block" role="status">

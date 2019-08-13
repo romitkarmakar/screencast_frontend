@@ -12,6 +12,10 @@ This is a quiz competition developed by GLUG for testing the students skills in 
 ## Installation
 - Clone this repository
 - Install all the dependencies by running this command
+
+## Infrastructure
+- Static files hosted on AWS S3(Simple Storage Service)
+- CDN runned on AWS Cloudfront.
 ```
 npm install
 ```
@@ -23,4 +27,7 @@ gatsby develop -p 5500
 ```
 gatsby build
 ```
-
+- Compile and deploy the production build to AWS S3
+```
+npm run deploy
+```

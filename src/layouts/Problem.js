@@ -11,21 +11,16 @@ export default class Problem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currQuestion: 1,
       problems: null,
-      isTrue: null,
-      answer: "",
-      email: ""
     };
 
-    this.next = this.next.bind(this);
+    this.submitAns = this.submitAns.bind(this);
     this.fetchData = this.fetchData.bind(this);
     this.checkAns = this.checkAns.bind(this);
-    this.setAnswer = this.setAnswer.bind(this);
   }
 
   componentDidMount() {
-      this.fetchData();
+    this.fetchData();
   }
 
   fetchData() {
@@ -34,42 +29,32 @@ export default class Problem extends React.Component {
     axios.get(`http://api.screencast.trennds.com/Project/quiz/getQuestion?email=${localStorage.email}`).then(function (response) {
       self.setState((state, props) => ({
         problems: response.data,
-        currQuestion: state.currQuestion + 1
       }));
     }).catch(function (error) {
       navigate('/finish/')
     });
   }
 
-  next() {
+  submitAns(answer) {
     var self = this
-    this.checkAns().then((value) => {
+    this.checkAns(answer).then((value) => {
       if (value === 1) {
         self.fetchData()
       }
     })
   }
 
-  checkAns() {
+  checkAns(answer) {
     var self = this
     return new Promise(function (resolve, reject) {
       try {
-        axios.get(`http://api.screencast.trennds.com/Project/quiz/checkAnswer?answer=${self.state.answer}&email=${localStorage.email}`).then(function (response) {
-          self.setState((state, props) => ({
-            isTrue: response.data.isTrue
-          }));
+        axios.get(`http://api.screencast.trennds.com/Project/quiz/checkAnswer?answer=${answer}&email=${localStorage.email}`).then(function (response) {
           AnswerAlert(response.data.isTrue)
           resolve(response.data.isTrue)
         });
       } catch (e) {
-        console.log("Error");
+        AnswerAlert(-1);
       }
-    })
-  }
-
-  setAnswer(answer) {
-    this.setState({
-      answer: answer
     })
   }
 
@@ -82,19 +67,13 @@ export default class Problem extends React.Component {
             <div className="col-sm-6 col-lg-8 mt-4">
               <div className="card bg-transparent">
                 <div className="card-header bg-transparent">
-                  <img src="https://img.icons8.com/color/48/000000/document.png" className="float-left" alt="ssf" />
+                  <img src="https://img.icons8.com/color/48/000000/document.png" className="float-left" alt="Document-Icon" />
                   <h2 className="text-white">Question</h2>
                 </div>
                 <div className="card-body">
                   <Question question={this.state.problems.question} imageHint={this.state.problems.image} />
                   <AudioHint audioUrl={this.state.problems.audio} />
-                  <Answer index={this.state.currQuestion} setAnswer={this.setAnswer} currAnswer={this.state.answer} />
-                </div>
-                <div className="card-footer bg-transparent">
-                  <button className="btn btn-success float-right m-2 pl-3" onClick={this.next}>
-                    Submit
-                    <img src="https://img.icons8.com/plasticine/26/000000/idea.png" alt="daf" />
-                  </button>
+                  <Answer onSubmit={this.submitAns}/>
                 </div>
               </div>
               <div className="d-none d-md-block col-2"></div>
@@ -104,8 +83,8 @@ export default class Problem extends React.Component {
       </div>
         ;
     else
-      return <div className="container">
-        <div className="spinner-border mx-auto d-block" role="status">
+      return <div className="container p-5">
+        <div className="spinner-border mx-auto d-block m-5 text-light" role="status">
           <span className="sr-only">Loading...</span>
         </div>
       </div>;
