@@ -10,7 +10,7 @@ export default function Dashboard() {
     const [level, setLevel] = useState(0)
 
     useEffect(() => {
-        Axios.get("http://api.screencast.trennds.com/Project/quiz/currLevel").then((res) => {
+        Axios.get("https://www.api.screencast.trennds.com/Project/quiz/currLevel").then((res) => {
             setLevel(res.data)
         })
     })

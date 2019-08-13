@@ -10,7 +10,7 @@ export default class GoogleSignIn extends React.Component {
   }
 
   registerUser(idToken) {
-    axios.get(`http://api.screencast.trennds.com/Project/quiz/register?type=1&id_token=${idToken}`).then((res) => {
+    axios.get(`https://www.api.screencast.trennds.com/Project/quiz/register?type=1&id_token=${idToken}`).then((res) => {
       console.log("User registered successfully");
     })
   }
