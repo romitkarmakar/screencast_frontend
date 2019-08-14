@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import GoogleSignIn from '../components/GoogleSignIn';
-import logo from '../images/screencast.png';
+import logo from '../images/screencast.webp';
 import { Link } from "gatsby"
 import FacebookSignIn from './FacebookSignIn';
 import { navigate } from "gatsby";
@@ -71,11 +71,11 @@ export default class NavBar extends React.Component {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink>
+              {/* <NavLink>
                 <Link to="/dashboard/">
                   <a className="nav-link" href="#">Dashboard</a>
                 </Link>
-              </NavLink>
+              </NavLink> */}
             </NavItem>
             <NavItem>
               <NavLink>

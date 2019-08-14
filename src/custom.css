@@ -77,7 +77,7 @@ audio { width: 200px; }
 
 .jumbotron {
   color: white;
-  background-image: url("https://www.proschoolonline.com/wp-content/uploads/2019/04/5-Top-Technology-Trends-In-2019-And-The-Opportunities-They-Will-Create-1030x672.jpg");
+  background-image: url("images/globe.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -104,6 +104,6 @@ html, body {
 
 html, body {
   height: 100vh;
-  background-image: url("https://cdn3.f-cdn.com/contestentries/334873/2536667/56a8a937103dd_thumb900.jpg"); 
+  background-image: url("images/tech-background.webp"); 
   height: '100%';
 }

@@ -19,8 +19,8 @@ export default (props) => {
     function logOut() {
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
-                confirmButton: 'btn btn-success',
-                cancelButton: 'btn btn-danger'
+                confirmButton: 'btn btn-success m-1',
+                cancelButton: 'btn btn-danger m-1'
             },
             buttonsStyling: false
         })

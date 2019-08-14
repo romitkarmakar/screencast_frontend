@@ -31,7 +31,7 @@ export default class Problem extends React.Component {
         problems: response.data,
       }));
     }).catch(function (error) {
-      navigate('/finish/')
+      navigate('/completed')
     });
   }
 
