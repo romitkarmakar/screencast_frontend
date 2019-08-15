@@ -34,12 +34,17 @@ export default class AudioHint extends React.Component {
     }
 
     render() {
-        return <div className="p-2">
-            <ReactHowler src={this.props.audioUrl} playing={this.state.isPlaying} />
-            <button className="btn bg-transparent" onClick={(e) => this.toggle()}>
-                {this.state.musicIcon}
-                <span className="text-white">Audio Hint</span>
-            </button>
-        </div>
+        var audioArr = this.props.audioUrl.split("/")
+        console.log(this.props.audioUrl)
+        if (audioArr[audioArr.length - 1] !== "Not%20Available")
+            return <div className="p-2">
+                <ReactHowler src={this.props.audioUrl} playing={this.state.isPlaying} />
+                <button className="btn bg-transparent" onClick={(e) => this.toggle()}>
+                    {this.state.musicIcon}
+                    <span className="text-white">Audio Hint</span>
+                </button>
+            </div>
+            else
+            return <div></div>
     }
 }

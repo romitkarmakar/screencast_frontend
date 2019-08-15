@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import GoogleSignIn from '../components/GoogleSignIn';
-import logo from '../images/screencast.webp';
+import logo from '../images/screencast.png';
 import { Link } from "gatsby"
 import FacebookSignIn from './FacebookSignIn';
 import { navigate } from "gatsby";

@@ -95,7 +95,7 @@ audio {
 
 .jumbotron .container {
   position: absolute;
-  top: 30%;
+  top: 40%;
   left: 3%;
   width: 100%;
 }
@@ -130,4 +130,12 @@ audio {
   color: white;
   z-index: 3;
   transition: box-shadow .6s ease-in, background-color .6s ease;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.pointer:hover {
+  text-decoration: underline !important;
 }

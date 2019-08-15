@@ -68,7 +68,7 @@ export default class Problem extends React.Component {
               <div className="card bg-transparent">
                 <div className="card-header bg-transparent">
                   <img src="https://img.icons8.com/color/48/000000/document.png" className="float-left" alt="Document-Icon" />
-                  <h2 className="text-white">Question</h2>
+                  <h2 className="text-white align-middle mt-1">Question</h2>
                 </div>
                 <div className="card-body">
                   <Question question={this.state.problems.question} imageHint={this.state.problems.image} />

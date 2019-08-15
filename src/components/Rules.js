@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import '../bootstrap.css';
 
 export default class Rules extends React.Component {
   constructor(props) {
@@ -20,7 +21,7 @@ export default class Rules extends React.Component {
   render() {
     return (
       <div>
-        <a className="nav-link text-white" onClick={this.toggle}>Rules</a>
+        <a className="nav-link text-white pointer" onClick={this.toggle}>Rules</a>
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>Rules of the Game</ModalHeader>
           <ModalBody>

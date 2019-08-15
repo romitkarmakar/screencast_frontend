@@ -50,7 +50,7 @@ export default (props) => {
     if (isLogged == 1)
         return <div onClick={(e) => logOut()}>
             <img src={image} height={30} alt="Test" className="img-circle" />
-            <span className="text-white m-2 text-capitalize">{name}</span>
+            <span className="text-white m-2 text-capitalize pointer">{name}</span>
         </div>
     else
         return <div></div>
