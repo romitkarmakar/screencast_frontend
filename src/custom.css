@@ -4,7 +4,7 @@
   box-sizing: border-box;
   position: relative;
   /* width: 13em;  - apply for fixed size */
-  margin: 0.2em;
+  margin: 0.8em;
   padding: 0 15px 0 46px;
   border: none;
   text-align: left;
@@ -85,7 +85,7 @@ audio {
 
 .jumbotron {
   color: white;
-  background-image: url("images/globe.webp");
+  /* background-image: url("images/globe.webp"); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -95,7 +95,7 @@ audio {
 
 .jumbotron .container {
   position: absolute;
-  top: 40%;
+  top: 30%;
   left: 3%;
   width: 100%;
 }
@@ -105,10 +105,6 @@ audio {
 }
 
 @import url('https://fonts.googleapis.com/css?family=Bree+Serif&display=swap');
-html, body {
-  height: 100vh;
-  background-color: #000000 !important;
-}
 
 /* html, body {
   height: 100vh;

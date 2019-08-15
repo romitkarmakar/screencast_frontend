@@ -6,6 +6,7 @@ import { Link } from "gatsby"
 import FacebookSignIn from './FacebookSignIn';
 import { navigate } from "gatsby";
 import '../custom.css';
+import Rules from '../components/Rules';
 
 import {
   Collapse,
@@ -52,7 +53,7 @@ export default class NavBar extends React.Component {
 
   render() {
     return <div className="navbar-inner">
-      <Navbar color="transparent" secondary expand="md">
+      <Navbar color="transparent" expand="md">
         <NavbarBrand>
           <Link to="/">
             <a className="navbar-brand" href="#">
@@ -66,27 +67,25 @@ export default class NavBar extends React.Component {
             <NavItem>
               <NavLink>
                 <Link to="/">
-                  <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+                  <a className="nav-link text-white" href="#">Home <span className="sr-only">(current)</span></a>
                 </Link>
               </NavLink>
             </NavItem>
             <NavItem>
-              {/* <NavLink>
-                <Link to="/dashboard/">
-                  <a className="nav-link" href="#">Dashboard</a>
-                </Link>
-              </NavLink> */}
+              <NavLink>
+                <Rules />
+              </NavLink>
             </NavItem>
             <NavItem>
               <NavLink>
                 <Link to="/leaderboard/">
-                  <a className="nav-link" href="#">LeaderBoard</a>
+                  <a className="nav-link text-white" href="#">LeaderBoard</a>
                 </Link>
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink>
-                <Logout/>
+                <Logout />
               </NavLink>
             </NavItem>
           </Nav>

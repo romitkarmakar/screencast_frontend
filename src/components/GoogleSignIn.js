@@ -38,6 +38,7 @@ export default class GoogleSignIn extends React.Component {
       onSuccess={(res) => { this.setData(res) }}
       onFailure={(res) => { this.setData(res)}}
       cookiePolicy={'single_host_origin'}
+      className="mr-3"
     />;
   }
 }

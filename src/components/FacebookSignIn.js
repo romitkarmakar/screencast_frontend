@@ -8,6 +8,7 @@ export default function FacebookSignIn(props) {
         autoLoad={false}
         fields="name,email,picture"
         callback={(response) => console.log(response)}
+        className="p-3 float-right"
         render={renderProps => (
             <button onClick={renderProps.onClick} className="m-2 align-middle loginBtn loginBtn--facebook">Facebook</button>
           )} />

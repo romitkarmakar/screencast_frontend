@@ -23,9 +23,10 @@ export default class LeaderBoard extends React.Component {
                 var temp = response.data.map((v, index) => {
                     return <div className="alert" role="alert" key={index}>
                         <img src={v.image} alt={v.name} className="img-circle" height="50" />
-                        <span className="m-2 text-capitalize text-white">{v.name}
+                        <span className="ml-2 text-capitalize text-white">{v.name}
                             <span className="float-right align-center text-white">{v.score}</span>
                         </span>
+                        <hr/>
                     </div>
                 })
                 self.setState({
