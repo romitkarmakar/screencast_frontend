@@ -25,11 +25,13 @@ export default class Rules extends React.Component {
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>Rules of the Game</ModalHeader>
           <ModalBody>
-            <ul className="p-3">
-              <li>Dont cheat !!!!!!</li>
-              <li>Dont try to hack because you will be never successfull.</li>
-              <li>If you face any problem in the game then fuck offf.</li>
-            </ul>
+            <ol className="p-3">
+              <li>The quiz comprises of 3 levels with 10 questions each.</li>
+              <li>Each question carries 10 marks.</li>
+              <li>The one who finishes the quiz first is the winner.</li>
+              <li>You can go to the next question only after getting the current question correct.</li>
+              <li>You can attempt a question as many times as you like.</li>
+            </ol>
           </ModalBody>
           <ModalFooter>
             <Button color="primary" onClick={this.toggle}>Close</Button>
