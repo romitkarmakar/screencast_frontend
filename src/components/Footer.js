@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../images/glug.svg';
+import logo from '../images/glug.png';
 import nit from '../images/nit.svg';
 
 export default () => {
@@ -9,6 +9,5 @@ export default () => {
             <img src={logo} alt="GLUG" height="50" className="m-2" />
             <img src={nit} alt="GLUG" height="50" className="m-2" />
         </div>
-
     </div>
 }

@@ -39,7 +39,6 @@ export default function Completed() {
                         </div>
                         <div className="card-footer d-block mx-auto bg-transparent">
                             <h1 className="text-white mt-5 text-center">{msg}</h1>
-                            <h3 className="text-center" style={{ fontFamily: 'serif', color: 'yellow' }}>Wait for another round to start.</h3>
                         </div>
                     </div>
                 </div>
