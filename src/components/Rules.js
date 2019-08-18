@@ -23,7 +23,7 @@ export default class Rules extends React.Component {
       <div>
         <a className="nav-link text-white pointer" onClick={this.toggle}>Rules</a>
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
-          <ModalHeader toggle={this.toggle}>Rules of the Game</ModalHeader>
+          <ModalHeader toggle={this.toggle}>Rules of the Quiz</ModalHeader>
           <ModalBody>
             <ol className="p-3">
               <li>The quiz comprises of 3 levels with 10 questions each.</li>
@@ -31,6 +31,7 @@ export default class Rules extends React.Component {
               <li>The one who finishes the quiz first is the winner.</li>
               <li>You can go to the next question only after getting the current question correct.</li>
               <li>You can attempt a question as many times as you like.</li>
+              <li>A level can be played only between its start and end timings.</li>
             </ol>
           </ModalBody>
           <ModalFooter>
