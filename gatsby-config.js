@@ -33,9 +33,9 @@ module.exports = {
     {
       resolve: `gatsby-plugin-s3`,
       options: {
-        bucketName: 'screencast.trennds.com',
+        bucketName: 'quiz.nitdgplug.org',
         protocol: "https",
-        hostname: "screencast.trennds.com",
+        hostname: "quiz.nitdgplug.org",
       },
     },
     {
