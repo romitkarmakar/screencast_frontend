@@ -27,9 +27,13 @@ export default class Problem extends React.Component {
     var self = this;
     console.log(this.state.email)
     axios.get(`https://www.api.screencast.trennds.com/Project/quiz/getQuestion?email=${localStorage.email}`).then(function (response) {
-      self.setState((state, props) => ({
-        problems: response.data,
-      }));
+      if(response.data.status == 200) {
+        self.setState((state, props) => ({
+          problems: response.data,
+        }));
+      } else {
+        navigate('/completed')
+      }
     }).catch(function (error) {
       navigate('/completed')
     });
@@ -73,7 +77,7 @@ export default class Problem extends React.Component {
                 <div className="card-body">
                   <Question question={this.state.problems.question} imageHint={this.state.problems.image} />
                   <AudioHint audioUrl={this.state.problems.audio} />
-                  <Answer onSubmit={this.submitAns}/>
+                  <Answer onSubmit={this.submitAns} />
                 </div>
               </div>
               <div className="d-none d-md-block col-2"></div>
