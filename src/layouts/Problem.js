@@ -26,7 +26,7 @@ export default class Problem extends React.Component {
   fetchData() {
     var self = this;
     console.log(this.state.email)
-    axios.get(`http://134.209.155.37/quiz/getQuestion?email=${localStorage.email}`).then(function (response) {
+    axios.get(`https://api.screencast.trennds.com/quiz/getQuestion?email=${localStorage.email}`).then(function (response) {
       if(response.data.status == 200) {
         self.setState((state, props) => ({
           problems: response.data,
@@ -52,7 +52,7 @@ export default class Problem extends React.Component {
     var self = this
     return new Promise(function (resolve, reject) {
       try {
-        axios.get(`http://134.209.155.37/quiz/checkAnswer?answer=${answer}&email=${localStorage.email}`).then(function (response) {
+        axios.get(`https://api.screencast.trennds.com/quiz/checkAnswer?answer=${answer}&email=${localStorage.email}`).then(function (response) {
           AnswerAlert(response.data.isTrue)
           resolve(response.data.isTrue)
         });

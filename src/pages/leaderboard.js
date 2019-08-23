@@ -18,7 +18,7 @@ export default class LeaderBoard extends React.Component {
 
     fetchData() {
         var self = this
-        axios.get("http://134.209.155.37/quiz/leaderboard").then((response) => {
+        axios.get("https://api.screencast.trennds.com/quiz/leaderboard").then((response) => {
             if (response.data.length != 0) {
                 var temp = response.data.map((v, index) => {
                     return <div className="alert" role="alert" key={index}>
