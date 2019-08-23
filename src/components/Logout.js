@@ -27,7 +27,7 @@ export default (props) => {
 
         swalWithBootstrapButtons.fire({
             title: 'Are you sure?',
-            text: "Doy want log out of this competition",
+            text: "Do you want to log out of this competition",
             type: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Log out!',
