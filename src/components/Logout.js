@@ -27,7 +27,7 @@ export default (props) => {
 
         swalWithBootstrapButtons.fire({
             title: 'Are you sure?',
-            text: "Doy want log out of this competition",
+            text: "Do you want to log out of this competition",
             type: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Log out!',
@@ -50,7 +50,7 @@ export default (props) => {
     if (isLogged == 1)
         return <div onClick={(e) => logOut()}>
             <img src={image} height={30} alt="Test" className="img-circle" />
-            <span className="text-white m-2 text-capitalize pointer">{name}</span>
+            <a class="text-white nav-link text-capitalize pointer" style="display: inline-block;">{name}</a>
         </div>
     else
         return <div></div>

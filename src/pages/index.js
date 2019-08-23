@@ -14,7 +14,7 @@ import FacebookSignIn from "../components/FacebookSignIn";
 class IndexPage extends React.Component {
   componentDidMount() {
     var typed = new Typed('.element', {
-      strings: ["show your talent to college.", "test your linux terminal skills.", "win exciting prizes and goodies."],
+      strings: ["show your talent to college.", "bring out the geek in you.", "win exciting prizes and goodies."],
       typeSpeed: 50,
       backSpeed: 50,
     });
