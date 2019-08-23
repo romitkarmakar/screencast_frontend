@@ -18,8 +18,8 @@ export default class LeaderBoard extends React.Component {
 
     fetchData() {
         var self = this
-        axios.get("https://www.api.screencast.trennds.com/Project/quiz/leaderboard").then((response) => {
-            if (response.data) {
+        axios.get("http://134.209.155.37/quiz/leaderboard").then((response) => {
+            if (response.data.length != 0) {
                 var temp = response.data.map((v, index) => {
                     return <div className="alert" role="alert" key={index}>
                         <span className="text-white mr-2">{v.rank}. </span>
@@ -32,6 +32,10 @@ export default class LeaderBoard extends React.Component {
                 })
                 self.setState({
                     playerRanks: temp
+                })
+            } else {
+                self.setState({
+                    playerRanks: <div>No data to show</div>
                 })
             }
 

@@ -30,7 +30,7 @@ class IndexPage extends React.Component {
             <h1 className="display-4">Screencast Quiz</h1>
             <h3>Competition to <span className="element"></span></h3>
               <GoogleSignIn className="mr-3"/>
-              <FacebookSignIn />
+              {/* <FacebookSignIn /> */}
           </div>
         </div>
         {/* <div className="container-fluid p-3 bg-transparent">
