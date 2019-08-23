@@ -50,7 +50,7 @@ export default (props) => {
     if (isLogged == 1)
         return <div onClick={(e) => logOut()}>
             <img src={image} height={30} alt="Test" className="img-circle" />
-            <a class="text-white nav-link text-capitalize pointer" style={{display: 'inline-block'}}>{name}</a>
+            <a className="text-white nav-link text-capitalize pointer" style={{display: 'inline-block'}}>{name}</a>
         </div>
     else
         return <div></div>

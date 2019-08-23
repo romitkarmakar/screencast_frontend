@@ -4,11 +4,28 @@ import DashboardLayout from '../layouts/DashboardLayout'
 import SEO from "../components/seo"
 import "../custom.css"
 import Axios from "axios";
+import { navigate } from "gatsby";
 
 
 export default function Completed() {
     const [headerMsg, setHeaderMsg] = useState("")
     const [msg, setMsg] = useState("")
+
+    function setTimer() {
+        Axios.get("https://www.api.screencast.trennds.com/Project/quiz/currLevel").then((res) => {
+            if (res.data.status == 200) {
+                setHeaderMsg("Congratulations")
+                setMsg(`You have finished level ${res.data.level}`)
+            } else {
+                if(res.data.message == "0 hour and 00 minutes") navigate("/dashboard/")
+                setHeaderMsg("Quiz has not started yet !")
+                setMsg(`Round ${res.data.level} starting in ${res.data.message}`)
+            }
+        }).catch((error) => {
+        })
+    }
+
+    setInterval(setTimer, 60000)
 
     useEffect(() => {
         Axios.get("https://www.api.screencast.trennds.com/Project/quiz/currLevel").then((res) => {
@@ -16,6 +33,7 @@ export default function Completed() {
                 setHeaderMsg("Congratulations")
                 setMsg(`You have finished level ${res.data.level}`)
             } else {
+                if(res.data.message == "0 hour and 00 minutes") navigate("/dashboard/")
                 setHeaderMsg("Quiz has not started yet !")
                 setMsg(`Round ${res.data.level} starting in ${res.data.message}`)
             }
@@ -47,3 +65,4 @@ export default function Completed() {
         </div>
     </DashboardLayout>
 }
+
