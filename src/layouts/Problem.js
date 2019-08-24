@@ -31,11 +31,13 @@ export default class Problem extends React.Component {
         self.setState((state, props) => ({
           problems: response.data,
         }));
-      } else {
+      } else if(response.data.status == 500) {
         navigate('/completed')
+      } else {
+        AnswerAlert(-1)
       }
     }).catch(function (error) {
-      navigate('/completed')
+      AnswerAlert(-1)
     });
   }
 
@@ -75,7 +77,7 @@ export default class Problem extends React.Component {
                   <h2 className="text-white align-middle mt-1">Question</h2>
                 </div>
                 <div className="card-body">
-                  <Question question={this.state.problems.question} imageHint={this.state.problems.image} />
+                  <Question question={this.state.problems.question} imageHint={this.state.problems.image} hint={this.state.problems.hint}/>
                   <AudioHint audioUrl={this.state.problems.audio} />
                   <Answer onSubmit={this.submitAns} />
                 </div>
