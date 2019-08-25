@@ -2,6 +2,7 @@ import React from 'react';
 import DashboardLayout from '../layouts/DashboardLayout';
 import axios from 'axios';
 import AnswerAlert from '../components/AnswerAlert';
+import data from '../env.json';
 
 export default class LeaderBoard extends React.Component {
     constructor(props) {
@@ -18,7 +19,7 @@ export default class LeaderBoard extends React.Component {
 
     fetchData() {
         var self = this
-        axios.get("https://api.screencast.trennds.com/quiz/leaderboard").then((response) => {
+        axios.get(`${data.api}quiz/leaderboard`).then((response) => {
             if (response.data.length != 0) {
                 var temp = response.data.map((v, index) => {
                     return <div className="alert" role="alert" key={index}>

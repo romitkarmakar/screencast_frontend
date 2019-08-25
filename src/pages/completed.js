@@ -5,6 +5,7 @@ import SEO from "../components/seo"
 import "../custom.css"
 import Axios from "axios";
 import { navigate } from "gatsby";
+import data from '../env.json';
 
 
 export default function Completed() {
@@ -12,7 +13,7 @@ export default function Completed() {
     const [msg, setMsg] = useState("")
 
     function setTimer() {
-        Axios.get("https://api.screencast.trennds.com/quiz/currLevel").then((res) => {
+        Axios.get(`${data.api}quiz/currLevel`).then((res) => {
             if (res.data.status == 200) {
                 setHeaderMsg("Congratulations")
                 setMsg(`You have finished level ${res.data.level}`)
@@ -28,7 +29,7 @@ export default function Completed() {
     setInterval(setTimer, 60000)
 
     useEffect(() => {
-        Axios.get("https://api.screencast.trennds.com/quiz/currLevel").then((res) => {
+        Axios.get(`${data.api}quiz/currLevel`).then((res) => {
             if (res.data.status == 200) {
                 setHeaderMsg("Congratulations")
                 setMsg(`You have finished level ${res.data.level}`)

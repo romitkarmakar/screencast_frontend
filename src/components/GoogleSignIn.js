@@ -2,6 +2,7 @@ import React from 'react';
 import GoogleLogin from 'react-google-login';
 import axios from 'axios';
 import { navigate } from "gatsby";
+import data from '../env.json';
 
 export default class GoogleSignIn extends React.Component {
   constructor(props) {
@@ -10,7 +11,7 @@ export default class GoogleSignIn extends React.Component {
   }
 
   registerUser(idToken) {
-    axios.get(`https://api.screencast.trennds.com/quiz/register?type=1&id_token=${idToken}`).then((res) => {
+    axios.get(`${data.api}quiz/register?type=1&id_token=${idToken}`).then((res) => {
       console.log("User registered successfully");
     })
   }

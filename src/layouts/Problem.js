@@ -5,6 +5,7 @@ import axios from 'axios';
 import AudioHint from '../components/AudioHint';
 import AnswerAlert from '../components/AnswerAlert';
 import { navigate } from 'gatsby';
+import data from '../env.json';
 
 export default class Problem extends React.Component {
 
@@ -26,7 +27,7 @@ export default class Problem extends React.Component {
   fetchData() {
     var self = this;
     console.log(this.state.email)
-    axios.get(`https://api.screencast.trennds.com/quiz/getQuestion?email=${localStorage.email}`).then(function (response) {
+    axios.get(`${data.api}quiz/getQuestion?email=${localStorage.email}`).then(function (response) {
       if(response.data.status == 200) {
         self.setState((state, props) => ({
           problems: response.data,
@@ -54,7 +55,8 @@ export default class Problem extends React.Component {
     var self = this
     return new Promise(function (resolve, reject) {
       try {
-        axios.get(`https://api.screencast.trennds.com/quiz/checkAnswer?answer=${answer}&email=${localStorage.email}`).then(function (response) {
+        answer = encodeURIComponent(answer)
+        axios.get(`${data.api}quiz/checkAnswer?answer=${answer}&email=${localStorage.email}`).then(function (response) {
           AnswerAlert(response.data.isTrue)
           resolve(response.data.isTrue)
         });
